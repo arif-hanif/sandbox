@@ -1,12 +1,11 @@
-from flask import Flask, url_for, request
+from flask import Flask, url_for, request, render_template
 app = Flask(__name__)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.values :
-        return 'username is %s' % request.values['username']
-    else:
-        return '<form method="POST" action="/login"><input type = "text" name = "username"/><p><button type="submit">Submit</button></form>'
+    if request.method == 'POST' :
+        return "User %s logged in" % request.form['username']
+    return render_template('login.html')
 
 ''' @app.route("/profile/<username>")
 def show_user_profile(username):
