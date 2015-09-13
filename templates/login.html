@@ -2,6 +2,11 @@
 <title>Login Page</title>
 
 <form action="/login" method = "POST">
+  {% if error %}
+  <p style = "color:red;">
+  {{ error }}
+</p>
+  {% endif %}
   <p>
     Username: <input type="text" name="username"/>
   </p>
